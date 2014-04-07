@@ -4,6 +4,20 @@ from __future__ import unicode_literals
 from docutils import nodes
 from docutils.parsers.rst import directives, Directive
 
+
+def comma_seperated_multiple_choices(argument, values):
+    try:
+        value_list = argument.lower().split(',')
+    except AttributeError:
+        raise ValueError('must supply an argument; choose from %s'
+                         % directives.format_values(values))
+
+    if len(set(value_list) - set(values)) == 0:
+        return ','.join(value_list)
+    else:
+        raise ValueError('"%s" unknown; choose from %s'
+                         % (argument, directives.format_values(values)))
+
 class JSFiddle(Directive):
     u"""
     Embed JSFiddle in articles.
@@ -34,12 +48,16 @@ class JSFiddle(Directive):
         :width: 100%
         :height: 300
     """
+    def tabs(argument):
+        keylist = ('js', 'resources', 'html', 'css', 'result')
+        return comma_seperated_multiple_choices(argument, keylist)
+
     required_arguments = 1
     optional_arguments = 4
     option_spec = {
         'width': directives.length_or_percentage_or_unitless,
         'height': directives.length_or_percentage_or_unitless,
-        'tabs': directives.unchanged,
+        'tabs': tabs,
         'skin': directives.unchanged,
     }
 

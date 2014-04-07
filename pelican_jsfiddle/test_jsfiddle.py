@@ -11,7 +11,7 @@ rest_text = '''
 .. jsfiddle:: if1live/V2P28
    :width: 100%
    :height: 150
-   :tabs: js,result
+   :tabs: result,js
    :skin: presentation
 
 '''
