@@ -13,6 +13,10 @@ class JSFiddle(Directive):
 
     FIDDLE_ID is required.
     width, height are optional.
+    tabs means whitb tabs and in which order should be displayed.
+    skin means which skin shoud be used.
+
+    detail spec: http://doc.jsfiddle.net/use/embedding.html
 
     FIDDLE_ID is....
     http://jsfiddle.net/if1live/V2P28/
@@ -22,6 +26,8 @@ class JSFiddle(Directive):
     .. jsfiddle:: FIDDLE_ID
         :width: 100%
         :height: 300
+        :tabs: js,resources,html,css,result
+        :skin: light
 
     Example:
     .. jsfiddle:: if1live/V2P28
@@ -29,10 +35,12 @@ class JSFiddle(Directive):
         :height: 300
     """
     required_arguments = 1
-    optional_arguments = 2
+    optional_arguments = 4
     option_spec = {
         'width': directives.length_or_percentage_or_unitless,
         'height': directives.length_or_percentage_or_unitless,
+        'tabs': directives.unchanged,
+        'skin': directives.unchanged,
     }
 
     final_argument_whitespace = False
@@ -40,13 +48,13 @@ class JSFiddle(Directive):
 
     def run(self):
         fiddle_id = self.arguments[0].strip()
-        width = '100%'
-        height = '300'
 
         width = self.options.get('width', '100%')
         height = self.options.get('height', '300')
+        tabs = self.options.get('tabs', 'js,resources,html,css,result')
+        skin = self.options.get('skin', 'light')
 
-        url = 'http://jsfiddle.net/{}/embedded/'.format(fiddle_id)
+        url = 'http://jsfiddle.net/{}/embedded/{}/{}/'.format(fiddle_id, tabs, skin)
         div_block = '<div class="jsfiddle">'
         embed_block = '<iframe width="{}" height="{}" src="{}" allowfullscreen="allowfullscreen" frameborder="0"></iframe>'.format(width, height, url)
 
