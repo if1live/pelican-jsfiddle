@@ -3,9 +3,13 @@
 
 from setuptools import setup
 from setuptools import find_packages
+import re
+import os
 
-
-version = __import__('pelican_jsfiddle').__version__
+# https://github.com/zzzeek/sqlalchemy/blob/master/setup.py
+v_file = open(os.path.join(os.path.dirname(__file__), 'pelican_jsfiddle', '__init__.py'))
+VERSION = re.compile(r".*__version__ = '(.*?)'", re.S).match(v_file.read()).group(1)
+v_file.close()
 
 packages = [
     'pelican_jsfiddle',
@@ -17,7 +21,7 @@ requires = [
 
 setup(
     name="pelican-jsfiddle",
-    version=version,
+    version=VERSION,
     url='https://github.com/if1live/pelican-jsfiddle',
     author="libsora",
     author_email="libsora25@gmail.com",
