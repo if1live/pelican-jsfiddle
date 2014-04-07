@@ -44,7 +44,7 @@ class JSFiddle(Directive):
         height = '300'
 
         width = self.options.get('width', '100%')
-        height = self.option.get('height', '300')
+        height = self.options.get('height', '300')
 
         url = 'http://jsfiddle.net/{}/embedded/'.format(fiddle_id)
         div_block = '<div class="jsfiddle">'
