@@ -1,9 +1,19 @@
 #!/usr/bin/env python
 #-*- coding: utf-8 -*-
 
-from distutils.core import setup
+from setuptools import setup
+from setuptools import find_packages
+
 
 version = __import__('pelican_jsfiddle').__version__
+
+packages = [
+    'pelican_jsfiddle',
+]
+
+requires = [
+    'docutils>=0.11',
+]
 
 setup(
     name="pelican-jsfiddle",
@@ -16,6 +26,9 @@ setup(
     description="Easily embed JSFiddle in your articles",
     long_description=open("README.md").read(),
     license="MIT",
+    platforms=['linux'],
+    packages=find_packages(exclude=["*.tests"]),
+    package_data={'': ['LICENSE', ]},
     classifiers=[
         'Development Status :: 4 - Beta',
         'Operating System :: OS Independent',
