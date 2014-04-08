@@ -7,7 +7,7 @@ from pelican_jsfiddle import register as register_jsfiddle
 from pelican_jsfiddle import jsfiddle
 
 
-class comma_seperated_multiple_choices(unittest.TestCase):
+class comma_seperated_multiple_choices_Test(unittest.TestCase):
     def test_error(self):
         multiple_choices = jsfiddle.comma_seperated_multiple_choices
         keylist = ('js', 'resources', 'html', 'css', 'result')

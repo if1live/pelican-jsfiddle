@@ -11,6 +11,3 @@ __license__ = 'MIT'
 __copyright__ = 'Copyright 2013'
 
 from pelican_jsfiddle.jsfiddle import register
-
-# fix pylint
-_register = register

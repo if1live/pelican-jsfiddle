@@ -19,6 +19,10 @@ def comma_seperated_multiple_choices(argument, values):
         raise ValueError('"%s" unknown; choose from %s'
                          % (argument, directives.format_values(values)))
 
+def tabs_directive(argument):
+    keylist = ('js', 'resources', 'html', 'css', 'result')
+    return comma_seperated_multiple_choices(argument, keylist)
+
 
 class JSFiddle(Directive):
     u"""
@@ -29,8 +33,9 @@ class JSFiddle(Directive):
 
     FIDDLE_ID is required.
     width, height are optional.
-    tabs means whitb tabs and in which order should be displayed.
+    tabs means which tabs and in which order should be displayed.
     skin means which skin shoud be used.
+    tabs, skin are optional.
 
     detail spec: http://doc.jsfiddle.net/use/embedding.html
 
@@ -50,16 +55,12 @@ class JSFiddle(Directive):
         :width: 100%
         :height: 300
     """
-    def tabs(argument):
-        keylist = ('js', 'resources', 'html', 'css', 'result')
-        return comma_seperated_multiple_choices(argument, keylist)
-
     required_arguments = 1
     optional_arguments = 4
     option_spec = {
         'width': directives.length_or_percentage_or_unitless,
         'height': directives.length_or_percentage_or_unitless,
-        'tabs': tabs,
+        'tabs': tabs_directive,
         'skin': directives.unchanged,
     }
 
