@@ -7,9 +7,10 @@ install:
   - pip install -q -r requirements.txt
   - pip install -q coverage
   - pip install -q coveralls
+  - pip install -q nose-cov
 
 script:
-  - nosetests pelican_jsfiddle --with-coverage --cover-package=pelican_jsfiddle
+  - nosetests --with-cov --cov-config .coveragerc --cov-report term --cov pelican_jsfiddle 
 
 after_success:
   - coveralls
