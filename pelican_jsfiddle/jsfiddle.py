@@ -1,4 +1,4 @@
-#-*- coding: utf-8 -*-
+# -*- coding: utf-8 -*-
 
 from __future__ import unicode_literals
 from docutils import nodes
@@ -8,6 +8,7 @@ from docutils.parsers.rst import directives, Directive
 def comma_seperated_multiple_choices(argument, values):
     try:
         value_list = argument.lower().split(',')
+        value_list = [x.strip() for x in value_list]
     except AttributeError:
         raise ValueError('must supply an argument; choose from %s'
                          % directives.format_values(values))
@@ -17,6 +18,7 @@ def comma_seperated_multiple_choices(argument, values):
     else:
         raise ValueError('"%s" unknown; choose from %s'
                          % (argument, directives.format_values(values)))
+
 
 class JSFiddle(Directive):
     u"""
