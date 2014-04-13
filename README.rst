@@ -19,12 +19,14 @@ Installation
 To install pelican-jsfiddle, simply install it from PyPI:
 
 .. code-block:: bash
+
     $ pip install pelican-jsfiddle
 
 
 Then enabled it in your pelicanconf.py
 
 .. code-block:: python
+
     PLUGINS = [
         # ...
         'pelican_jsfiddle',
@@ -37,22 +39,25 @@ Usage
 In your article or page, you simply need to add a line to embed your JSFiddle.
 
 .. code-block: rst
+
     .. jsfiddle:: FIDDLE_ID
 
 Which will result in:
 
 .. code-block:: html
+
     <div class="jsfiddle">
     <iframe allowfullscreen="allowfullscreen" frameborder="0" height="300" src="http://jsfiddle.net/<FIDDLE_ID>/embedded/js,resources,html,css,result/light/" width="100%">
     </iframe>
     </div>
 
 Additional arguments
---------------------
+----------------------
 
-You can also specify a `width`, `height`, `tabs` and `skin`
+You can also specify a width, height, tabs and skin.
 
-.. code-block: rst
+.. code-block:: rst
+
     .. jsfiddle:: if1live/V2P28
         :width: 100%
         :height: 300
@@ -62,8 +67,11 @@ You can also specify a `width`, `height`, `tabs` and `skin`
 
 Which will result in:
 
-.. code-block: html
+.. code-block:: html
+
     <div class="jsfiddle">
     <iframe allowfullscreen="allowfullscreen" frameborder="0" height="300" src="http://jsfiddle.net/if1live/V2P28/embedded/js,resources,html,css,result/light/" width="100%">
     </iframe>
     </div>
+
+

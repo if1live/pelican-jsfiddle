@@ -21,6 +21,10 @@ requires = [
     'docutils>=0.11',
 ]
 
+tests_require = [
+    'nose',
+]
+
 setup(
     name="pelican-jsfiddle",
     version=VERSION,
@@ -33,9 +37,11 @@ setup(
     description="Easily embed JSFiddle in your articles",
     long_description=open("README.rst").read(),
     license="MIT",
-    platforms=['linux'],
-    packages=['pelican_jsfiddle'],
+    packages=packages,
     package_data={'': ['LICENSE', ]},
+    include_package_data=True,
+    install_requires=requires,
+    tests_require=tests_require,
     keywords=['pelican', 'jsfiddle', 'plugin'],
     classifiers=[
         'Development Status :: 4 - Beta',
