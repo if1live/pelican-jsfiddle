@@ -11,6 +11,8 @@ v_file = open(os.path.join(os.path.dirname(__file__), 'pelican_jsfiddle', '__ini
 VERSION = re.compile(r".*__version__ = '(.*?)'", re.S).match(v_file.read()).group(1)
 v_file.close()
 
+download_url = 'https://github.com/if1live/pelican-jsfiddle/tarball/{}'.format(VERSION)
+
 packages = [
     'pelican_jsfiddle',
 ]
@@ -23,16 +25,18 @@ setup(
     name="pelican-jsfiddle",
     version=VERSION,
     url='https://github.com/if1live/pelican-jsfiddle',
+    download_url=download_url,
     author="libsora",
     author_email="libsora25@gmail.com",
     maintainer="libsora",
     maintainer_email="libsora25@gmail.com",
     description="Easily embed JSFiddle in your articles",
-    long_description=open("README.md").read(),
+    long_description=open("README.rst").read(),
     license="MIT",
     platforms=['linux'],
-    packages=find_packages(exclude=["*.tests"]),
+    packages=['pelican_jsfiddle'],
     package_data={'': ['LICENSE', ]},
+    keywords=['pelican', 'jsfiddle', 'plugin'],
     classifiers=[
         'Development Status :: 4 - Beta',
         'Operating System :: OS Independent',
