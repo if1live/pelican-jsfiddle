@@ -18,11 +18,11 @@ $ pip install pelican-jsfiddle
 Then enabled it in your pelicanconf.py
 
 ```python
-    PLUGINS = [
-        # ...
-        'pelican_jsfiddle',
-        # ...
-    ]
+PLUGINS = [
+    # ...
+    'pelican_jsfiddle',
+    # ...
+]
 ```
 
 ## Usage
