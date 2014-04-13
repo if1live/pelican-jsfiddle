@@ -38,7 +38,7 @@ Usage
 
 In your article or page, you simply need to add a line to embed your JSFiddle.
 
-.. code-block: rst
+.. code-block:: rst
 
     .. jsfiddle:: FIDDLE_ID
 
