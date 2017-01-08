@@ -75,7 +75,7 @@ class JSFiddle(Directive):
         tabs = self.options.get('tabs', 'js,resources,html,css,result')
         skin = self.options.get('skin', 'light')
 
-        url = 'http://jsfiddle.net/{}/embedded/{}/{}/'.format(fiddle_id, tabs, skin)
+        url = '//jsfiddle.net/{}/embedded/{}/{}/'.format(fiddle_id, tabs, skin)
         div_block = '<div class="jsfiddle">'
         embed_block = '<iframe width="{}" height="{}" src="{}" allowfullscreen="allowfullscreen" frameborder="0"></iframe>'.format(width, height, url)
 
